@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Shop</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #07130d;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #064e35, #0c2418);
+}
+
+header h1 {
+    color: #63ffad;
+    font-size: 38px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 14px 25px;
+    background: #10251a;
+    color: white;
+    border: 2px solid #25c875;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.tab.active {
+    background: #19a85c;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #10251a;
+    border: 2px solid #25c875;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+}
+
+.card h2 {
+    color: #79ffb5;
+}
+
+.gem {
+    font-size: 60px;
+}
+
+.description {
+    color: #b8d8c4;
+}
+
+.price {
+    color: #62ffab;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.buy {
+    display: block;
+    background: #19a85c;
+    padding: 13px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.buy:hover {
+    background: #24d477;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #8aaa97;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐾 Pet Shop 🐾</h1>
+    <p>💎 Najlepsze oferty • Discord 💎</p>
+</header>
+
+<!-- KLIKALNE ZAKŁADKI -->
+
+<div class="tabs">
+
+    <button class="tab active" onclick="showTab('offers', this)">
+        🛒 Oferty
+    </button>
+
+    <button class="tab" onclick="showTab('buyback', this)">
+        💰 Skup
+    </button>
+
+    <button class="tab" onclick="showTab('soon', this)">
+        📦 Wkrótce
+    </button>
+
+</div>
+
+<div class="container">
+
+    <!-- ZAKŁADKA OFERTY -->
+
+    <section id="offers" class="page active">
+
+        <div class="offers">
+
+            <div class="card">
+                <div class="gem">💎</div>
+                <h2>1B Diamentów</h2>
+                <p class="description">1 000 000 000 diamentów</p>
+                <div class="price">9 zł</div>
+                <a class="buy" href="https://discord.gg/8dRFv8tr" target="_blank">
+                    Zamów na Discordzie
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="gem">💎</div>
+                <h2>100M Diamentów</h2>
+                <p class="description">100 000 000 diamentów</p>
+                <div class="price">1 zł</div>
+                <a class="buy" href="https://discord.gg/8dRFv8tr" target="_blank">
+                    Zamów na Discordzie
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="gem">🐾</div>
+                <h2>Huge Pet</h2>
+                <p class="description">Różne modele</p>
+                <div class="price">od 0,35 zł</div>
+                <a class="buy" href="https://discord.gg/8dRFv8tr" target="_blank">
+                    Zamów na Discordzie
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="gem">🐉</div>
+                <h2>Titanic</h2>
+                <p class="description">Różne modele</p>
+                <div class="price">od 45 zł</div>
+                <a class="buy" href="https://discord.gg/8dRFv8tr" target="_blank">
+                    Zamów na Discordzie
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ZAKŁADKA SKUP -->
+
+    <section id="buyback" class="page">
+
+        <div class="offers">
+
+            <div class="card">
+                <div class="gem">💰</div>
+                <h2>Skup 100M Diamentów</h2>
+                <p class="description">100 000 000 diamentów</p>
+                <div class="price">50 gr</div>
+                <a class="buy" href="https://discord.gg/8dRFv8tr" target="_blank">
+                    Sprzedaj na Discordzie
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ZAKŁADKA WKRÓTCE -->
+
+    <section id="soon" class="page">
+
+        <div class="card">
+            <div class="gem">📦</div>
+            <h2>Wkrótce!</h2>
+            <p class="description">Nowe oferty pojawią się tutaj.</p>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    🐾 Pet Shop 🐾
+</footer>
+
+<script>
+function showTab(tabName, button) {
+
+    // Ukrywa wszystkie strony
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
+
+    // Wyłącza wszystkie zakładki
+    document.querySelectorAll(".tab").forEach(function(tab) {
+        tab.classList.remove("active");
+    });
+
+    // Pokazuje wybraną stronę
+    document.getElementById(tabName).classList.add("active");
+
+    // Podświetla klikniętą zakładkę
+    button.classList.add("active");
+}
+</script>
+
+</body>
+</html>
+```
